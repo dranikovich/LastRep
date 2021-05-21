@@ -215,13 +215,15 @@ namespace LanguageAcademyPraktik.Windows
             NewGrid.Visibility = Visibility.Collapsed;
             MainStack.Visibility = Visibility.Visible;
             BNewService.Visibility = Visibility.Visible;
+            csTBt.Text = "";
+            csDP.SelectedDate = null;
+            csTBt.Visibility = Visibility.Collapsed;
         }
         DateTime DT;
 
         private void csBRedInside_Click(object sender, RoutedEventArgs e)
         {
             Service S = ServiswList[newId];
-            MessageBox.Show(csCBc.SelectedValue + " " + S.ID + " " + DT);
             ClientService obj = new ClientService()
             {
                 ClientID = Convert.ToInt32(csCBc.SelectedValue),
@@ -233,6 +235,9 @@ namespace LanguageAcademyPraktik.Windows
             {
                 Classes.Base.DBD.ClientService.Add(obj);
                 Classes.Base.DBD.SaveChanges();
+                csTBt.Text = "";
+                csDP.SelectedDate = null;
+                csTBt.Visibility = Visibility.Collapsed;
             }
             else if (dialogResult == DialogResult.No)
             {
@@ -254,15 +259,13 @@ namespace LanguageAcademyPraktik.Windows
             csBRedInside.IsEnabled = false;
             Regex r1 = new Regex("[0-1][0-9]:[0-5][0-9]");
             Regex r2 = new Regex("[2][0-3]:[0-5][0-9]");
-            string s = "";
             if ((r1.IsMatch(csTBt.Text)) || (r2.IsMatch(csTBt.Text)) && csTBt.Text.Length == 5)
             {
-                MessageBox.Show(csTBt.Text);
                 TimeSpan TS = TimeSpan.Parse(csTBt.Text);
                 DT = DT.Add(TS);
                 if (DT > DateTime.Now)
                 {
-                    MessageBox.Show(DT + "");
+
                     csBRedInside.IsEnabled = true;
                 }
                 else
