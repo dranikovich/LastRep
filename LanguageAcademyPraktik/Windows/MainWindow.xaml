@@ -5,10 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LanguageAcademyPraktik"
         mc:Ignorable="d"
-        Title="LanguageAcademy" Height="900" Width="800" FontFamily="Comic Sans MS"
-        Icon="/Resources/school_logo.png"
-        >
+        Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Frame Name="MFrame" NavigationUIVisibility="Hidden"></Frame>
+        <Frame Name="MFrame"></Frame>
     </Grid>
 </Window>
